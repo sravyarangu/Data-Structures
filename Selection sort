@@ -1,0 +1,45 @@
+//selsort with passes
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+  int a[20],i,n,t,j,temp,s,m;
+  printf("enter size");
+  scanf("%d",&n);
+  printf("enter elements\t");
+  for(i=0;i<n;i++)
+  {
+      scanf("%d",&a[i]);
+  }
+  printf("elements before sorting");
+  for(i=0;i<n;i++)
+  {
+      printf("%d\t",a[i]);
+  }
+  for(i=0;i<n-1;i++)
+  {
+      printf("\npasses ");
+      for(s=0;s<n;s++)
+      {
+          printf("%d\t",a[s]);
+      }
+     m=i;
+     for(j=i+1;j<n;j++)
+     {
+         if(a[m]>a[j])
+         {
+             m=j;
+         }
+     }
+     t=a[m];
+     a[m]=a[i];
+     a[i]=t;
+  }
+  printf("\nelements after sorting\n");
+  for(i=0;i<n;i++)
+  {
+      printf("%d\t",a[i]);
+}  
+      
+    return 0;
+}
