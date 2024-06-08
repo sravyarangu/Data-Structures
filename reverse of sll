@@ -1,0 +1,59 @@
+// Online C compiler to run C program online
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node *next;
+};
+int main()
+{
+struct node *head,*newnode,*temp,*cur;
+struct node *prev=NULL;
+head=NULL;
+int choice=1;
+while(choice==1)
+{
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("enter the data you want to insert");
+scanf("%d",&newnode->data);
+newnode->next=NULL;
+if(head==NULL)
+{
+head=newnode;
+}
+else
+{
+newnode->next=head;
+head=newnode;
+}
+printf("do you want to continue (0,1)?");
+scanf("%d",&choice);
+}
+temp=head;
+printf("original list\n");
+while(temp!=NULL)
+{
+printf("%d\t",temp->data);
+temp=temp->next;
+}
+cur=head;
+temp=cur->next;
+while(cur!=NULL)
+{
+temp=cur->next;
+    cur->next=prev;
+    prev=cur;
+    cur=temp;
+}
+head=prev;
+printf("reversed list\n");
+cur=head;
+while(cur!=NULL)
+{
+    printf("%d\t",cur->data);
+    cur=cur->next;
+}
+
+    return 0;
+}
