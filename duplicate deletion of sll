@@ -1,0 +1,83 @@
+// delete duplicate
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node*new,*prev,*temp,*head,*d;
+struct node*head=NULL;
+int main()
+{
+    int p=1,t;
+    while(p==1)
+    {
+        printf("enter elements in sorted list");
+        new=(struct node*)malloc(sizeof(struct node));
+        scanf("%d",&new->data);
+        new->next=NULL;
+        if(head==NULL)
+        {
+            head=new;
+            temp=new;
+        }
+        else
+        {
+            temp->next=new;
+            temp=new;
+        }
+        printf("do you want to continue(0,1)?");
+        scanf("%d",&p);
+    }
+    printf("\noriginal list is \n");
+      temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+    temp=head;
+    while(temp->next!=NULL)
+    {
+        d=temp->next;
+        while(d!=NULL)
+        {
+            if(temp->data>d->data)
+            {
+                t=temp->data;
+                temp->data=d->data;
+                d->data=t;
+            }
+            d=d->next;
+        }
+        temp=temp->next;
+    }
+     printf("\nsorted list is \n");
+      temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+temp=head;
+while(temp->next!=NULL)
+{
+   if(temp->data==temp->next->data)
+   {
+       prev=temp->next->next;
+       temp->next=prev;
+   }
+    else{
+        temp=temp->next;
+    }}
+
+printf("\nnew list is\n");
+temp=head;
+while(temp!=NULL)
+{
+    printf("%d\t",temp->data);
+    temp=temp->next;
+}
+return 0;
+        }
