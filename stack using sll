@@ -1,0 +1,79 @@
+// new stack using single linked list. 
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+}*head,*new,*temp,*ptr;
+struct node *head=NULL;
+int main() {
+ int top=-1,i,ch=1,n,s;
+ printf("enter size");
+ scanf("%d",&n);
+ while(n>0)
+ {
+     if(top<=n)
+     {
+     printf("1.push\t2.pop\t3.display\t4.exit\n");
+     scanf("%d",&s);
+     if(s==1)
+     {
+     new=(struct node*)malloc(sizeof(struct node));    
+     new->next=NULL;
+     printf("enter data\t");
+     scanf("%d",&new->data);
+     if(head==NULL)
+     {
+         head=temp=new;
+         top++;
+         
+     }
+      else if(top>n-2)
+     {
+         printf("overflow\n");
+     }
+     else
+     {
+         new->next=head;
+         head=new;
+         top++;
+     }
+ }
+     }
+     if(s==2)
+     {
+         if(top==-1)
+         {
+             printf("\nstack is empty\n");
+         }
+         else
+         {
+             temp=head;
+             head=temp->next;
+            top--;
+            printf(" pop operation done\n");
+         }
+     }
+if(s==3)
+{  
+    if(head==NULL||top==-1)
+    {
+        printf("no stack available\n");
+    }
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
+if(s==4)
+{
+    exit(0);
+    break;
+}
+}
+    return 0;
+}
