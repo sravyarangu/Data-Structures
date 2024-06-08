@@ -1,0 +1,88 @@
+//evaluation of postfix
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int a[20],top=-1,n,s,ch,b,c,d;
+    do
+    {
+        printf("1.integer\t2.operator\t3.result");
+        scanf("%d",&n);
+        if(n==1)
+        {
+            top=top+1;
+            printf("enter");
+            scanf("%d",&a[top]);
+        }
+        else if(n==2)
+        {
+            printf("1.+\t2.-\t3.%\t4.*\t5./\t");
+            scanf("%d",&ch);
+            switch(ch)
+            {
+                case 1:
+                printf("%d is pre top\n",a[top]);
+                b=a[top--];
+                c=a[top--];
+                d=c+b;
+                printf("%d is res\n",d);
+                   top=top+1;
+                a[top]=d;
+                printf("%d is top\n",a[top]);
+                break;
+                case 2:
+                printf("%d is pre top\n",a[top]);
+                b=a[top--];
+                c=a[top--];
+                d=c-b;
+                    printf("%d id res\n",d);
+                       top=top+1;
+                 a[top]=d;
+                 printf("%d is top\n",a[top]);
+                break;
+                 case 3:
+                 printf("%d is pre top\n",a[top]);
+                b=a[top--];
+                c=a[top--];
+                d=c%b;
+                    printf("%d is res\n",d);
+                       top=top+1;
+                 a[top]=d;
+                 printf("%d is top\n",a[top]);
+                 break;
+                 case 4:
+                   printf("%d is prev top\n",a[top]);
+                b=a[top--];
+                c=a[top--];
+                d=c*b;
+                    printf("%d id res\n",d);
+                       top=top+1;
+                 a[top]=d;
+                 printf("%d is top\n",a[top]);
+                break;
+                 case 5:
+                   printf("%d is prev top\n",a[top]);
+                b=a[top--];
+                c=a[top--];
+                d=c/b;
+                    printf("%d id res\n",d);
+                    top=top+1;
+                 a[top]=d;
+                 printf("%d is top\n",a[top]);
+                break;
+                case 6:
+                exit(0);
+                break;
+            }
+        }
+                else
+                {
+                    printf("\nresult is %d\n",a[top]);
+                    break;
+                }
+    }
+    while(n!=6);
+  
+    
+    return 0;
+}
