@@ -1,0 +1,58 @@
+// stacks using arrays
+#include <stdio.h>
+#include<stdlib.h>
+int main() {
+  int a[20],top=-1,i=1,n,s;
+  printf("enter size");
+  scanf("%d",&n);
+  while(n>0)
+  {
+    printf("1.push\t2.pop\t3.display");
+    scanf("%d",&s);
+    if(s==1)
+    {
+      while(top>=-1)
+      {
+        if(top!=n-1)
+        {
+          top=top+1;
+          printf("enter\t");
+          scanf("%d",&a[top]);
+           
+        }
+        else
+        {
+          printf("overflow");
+          break;
+           
+        }
+      }
+    }
+    else if(s==2)
+    {
+      if(top==-1)
+      {
+        printf("list empty");
+      }
+      else
+      {
+        top=top--;
+      }
+    }
+    else if(s==3)
+    {
+      printf("elements in stack are\n");
+      for(i=top;i>-2;i--)
+      {
+        printf("%d\t",a[i]);
+      }
+      printf("\n");
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  return 0;
+}
