@@ -1,0 +1,73 @@
+// balancing paranthesis
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void push(char);
+char pop();
+char s[30];
+int top=-1;
+int main() {
+    // Write C code here
+    char in[20],ch;
+    int i,top=0;
+    printf("enter");
+    scanf("%s",&in);
+    for(i=0;in[i]!='\0';i++)
+    {
+        ch=in[i];
+        if(ch=='('||ch=='['||ch=='{') 
+        {
+            top=top+1;
+printf("%d",top);
+            s[top]=ch;
+        }
+        else if(ch==')')
+        {
+            if (top==0)
+            {
+                printf("hi");
+                printf("unbalanced");
+            }
+            else
+            {
+                 
+              printf("%c",s[top]);
+              top=--top;
+            }
+        }
+else if(ch==']')
+        {
+            if (top==0)
+            {
+                printf("2unbalanced");
+            }
+            else
+            {
+top=--top;
+printf("%c",s[top]);
+            }
+        }
+else if(ch=='}')
+        {
+            if (top==0)
+            {
+                printf("3unbalanced");
+            }
+            else
+            {
+                top=--top;
+                printf("%c",s[top]);
+                
+            }
+        }
+        }
+if(top==0)
+{
+    printf("balanced");
+}
+else
+{
+    printf("unbalanced");
+}
+    return 0;
+}
