@@ -1,0 +1,182 @@
+ //poly addition
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int co;
+int ex;
+struct node *next;
+};
+int main()
+{
+struct node *p=NULL,*q=NULL,*r=NULL,*n,*temp,*f,*l;
+
+int choice=1;
+while(choice==1)
+{
+n=(struct node*)malloc(sizeof(struct node));
+printf("coefficient");
+scanf("%d",&n->co);
+printf("exponent");
+scanf("%d",&n->ex);
+n->next=NULL;
+if(p==NULL)
+{
+p=temp=n;
+}
+else
+{
+temp->next=n;
+temp=n;
+}
+printf("do you want to continue (0,1)?");
+scanf("%d",&choice);
+}
+temp=p;
+while(temp!=NULL)
+{
+printf("%d",temp->co);
+printf("x^");
+printf("%d",temp->ex);
+if(temp->next!=NULL)
+{
+    printf("+");
+}
+temp=temp->next;
+}
+printf("\n");
+choice=1;
+while(choice==1)
+{
+     n=(struct node*)malloc(sizeof(struct node));
+printf("coefficient");
+scanf("%d",&n->co);
+printf("exponent");
+scanf("%d",&n->ex);
+n->next=NULL;
+if(q==NULL)
+{
+q=temp=l=n;
+}
+else
+{
+temp->next=n;
+temp=n;
+}
+printf("do you want to continue (0,1)?");
+scanf("%d",&choice);
+}
+temp=q;
+while(temp!=NULL)
+{
+printf("%d",temp->co);
+printf("x^");
+printf("%d",temp->ex);
+if(temp->next!=NULL)
+{
+    printf("+");
+}
+temp=temp->next;
+}
+//logic poly addition
+f=p;
+l=q;   
+while(f!=NULL&&l!=NULL)
+{ n=(struct node*)malloc(sizeof(struct node));
+    if(f->ex==l->ex)
+    {
+        n->co=((f->co)+(l->co));
+        n->ex=f->ex;
+                  if(r==NULL)
+                    {
+                      r=temp=n; 
+                      printf("hi%d",r->co);
+                    }
+                    else
+                    {
+                       temp->next=n;
+                        temp=n; 
+                    }
+        f=f->next;
+        l=l->next;
+    }
+    else if(f->ex>l->ex)
+    { 
+        n->co=f->co;
+        n->ex=f->ex;
+                  if(r==NULL)
+                    {
+                      r=temp=n; 
+                    }
+                    else
+                    {
+                       temp->next=n;
+                        temp=n; 
+                    }
+                
+        f=f->next;
+    }
+    else if(l->ex>f->ex)
+    {        n->co=l->co;
+        n->ex=l->ex;
+                   if(r==NULL)
+                    {
+                      r=temp=n; 
+                    }
+                    else
+                    {
+                       temp->next=n;
+                        temp=n; 
+                    }
+        l=l->next;
+    }
+}
+
+while(f!=NULL)
+{  
+    n=(struct node*)malloc(sizeof(struct node));
+    n->co=f->co;
+    
+    n->ex=f->ex;
+               if(r==NULL)
+                    {
+                      r=temp=n; 
+                    }
+                    else
+                    {
+                       temp->next=n;
+                        temp=n; 
+                    }
+    f=f->next;
+}
+
+while(l!=NULL)
+{  n=(struct node*)malloc(sizeof(struct node));
+    n->co=l->co;
+    n->ex=l->ex;
+               if(r==NULL)
+                    {
+                      r=temp=n; 
+                    }
+                    else
+                    {
+                       temp->next=n;
+                        temp=n; 
+                    }
+    l=l->next;
+}
+printf("\nresult is:");
+temp=r;
+while(temp!=NULL)
+{
+printf("%d",temp->co);
+printf("x^");
+printf("%d",temp->ex);
+if(temp->next!=NULL)
+{
+    printf("+");
+}
+temp=temp->next;
+}
+    return 0;
+}
