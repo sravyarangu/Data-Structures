@@ -1,3 +1,4 @@
+//symmetry
 #include<stdio.h>
 #include<string.h>
 char stack[20];
