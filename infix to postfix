@@ -1,4 +1,4 @@
-//conversion of infix to postfix
+//new conversion of infix to postfix
 #include<ctype.h>
 #include<stdio.h>
 #include<stdlib.h>
@@ -27,18 +27,21 @@ int main()
             p[j]=ch;
             j++;
         }
-        else if(ch==')')
+        else if(ch==')'&&t!=-1)
         {
             while(s[t]!='('&&t!=-1)
             {
                 p[j]=pop();
                 j++;
             }
+            if(s[t]=='(')
+            {
             pop();
+        }
         }
         else 
         {
-            while(priority(ch)>=priority(s[t])&&t!=-1)
+            while(priority(s[t])>=priority(ch)&&t!=-1)
             {
                 p[j]=pop();
                 j++;
@@ -85,5 +88,5 @@ int priority(char ch)
     else
     {
         return -1;
-}
+    }
 }
