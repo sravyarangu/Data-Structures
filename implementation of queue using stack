@@ -1,0 +1,33 @@
+// implementation of queues using stacks
+#include <stdio.h>
+#include<stdlib.h>
+int main() {
+    int a[20], s[20], I, top=0,top1=0,n;
+    printf("enter size");
+    scanf("%d",&n);
+    printf("enter elements");
+    while (top<n)
+    {    
+            scanf("%d",&a[top]);
+            top++;
+           
+    }
+    top--;
+   while(top>=0)
+    {
+        s[top1]=a[top];
+        top--;
+        top1++;
+
+    }
+    top1--;
+    printf("queue is");
+while(top1>=0)
+    {
+      
+        printf("%d\t",s[top1]);
+        top1--;
+    }
+
+    return 0;
+}
