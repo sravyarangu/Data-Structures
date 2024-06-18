@@ -12,7 +12,7 @@ int main() {
      scanf("%d",&ch);
      if(ch==1)
      {
-         if(rear==n)
+         if(rear==n-1)
          {
              printf("overflow\n");
          }
