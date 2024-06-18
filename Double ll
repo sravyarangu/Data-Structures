@@ -46,12 +46,12 @@ scanf("%d",&p);
               scanf("%d",&pos);
               newnode->next=NULL;
               temp=head;
-                   while(temp->next!=NULL&&i<pos)
+                   while(temp->next!=NULL&&i<pos-1)
                    {
                      temp=temp->next;
                      i++;
                    }
-                   if(i!=pos)
+                   if(i!=pos-1)
                    {
                        printf("no position found");
                    }
@@ -132,7 +132,7 @@ scanf("%d",&p);
 }
 }
     }
-  
+
 else if(p==3)
   {
      temp=head;
