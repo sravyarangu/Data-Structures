@@ -1,0 +1,70 @@
+// symmetry
+#include <stdio.h>
+#include<string.h>
+# include<stdlib.h>
+int main() {
+    char s[20],a[20];
+    int  I, top=-1,j=0,l,m,ch,d,d1;
+    printf("enter");
+    scanf("%s",&s);
+   
+    l=strlen(s);
+    printf("%d is len\n",l);
+    if(l%2==0)
+    {
+        m=(l/2)-1;
+       
+for(I=m+1;I<l;I++)
+        {
+            top++;
+           a[top]=s[I];
+printf("%d is top\n",top);
+    }
+    }
+    else
+    {
+        m=((l+1)/2)-1;
+   d1=m;
+          for(I=m+1;I<l;I++)
+        {
+            top++;
+           a[top]=s[I];
+           printf("%d is top\n",top);
+        }
+}
+       while(top!=-1) 
+       {
+            ch=a[top];
+top=top-1;
+if(l%2!=0)
+m=m-1;
+         if(ch==s[m])
+         {
+             j++;
+             printf("%d is j\n",j);
+             m=m-1;
+         }
+       }
+         if(l%2==0)
+         {
+       if(j==l/2)
+       {
+           printf("\nsym\n");
+       }
+       else
+       {
+           printf ("\nun");
+       }
+    }
+    else
+    {
+                   if(j==d1)
+           printf("\nsym\n");
+       
+else
+       {
+           printf ("\nun");
+       }
+}
+    return 0;
+}
