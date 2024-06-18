@@ -1,0 +1,78 @@
+// QUEUE USING LINKED LISTS
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+}*head,*new,*temp,*ptr;
+struct node *head=NULL;
+int main() {
+ int front=-1,rear=-1,i,n,ch,d;
+ while(n>0)
+ {
+     printf("1.enqueue\t2.dequeue\t3.display\n");
+     printf("what is your choice\t");
+     new=(struct node*)malloc(sizeof(struct node));
+     scanf("%d",&ch);
+     if(ch==1)
+     {
+         
+
+         printf("enter data\t");
+         
+         scanf("%d",&new->data);
+         new->next=NULL;
+         if(head==NULL)
+         {
+             front=0;
+             rear=0;
+             head=new;
+             temp=head;
+             printf("done");
+         }
+         else
+         {
+             rear=rear+1;
+           while(temp->next!=NULL)
+           {
+               temp=temp->next;
+           }
+           temp->next=new;
+             printf("okay");
+         }
+         
+     }
+     else if(ch==2)
+     {temp=head;
+         if(front!=rear)
+         {
+         front++;
+         head=temp->next;
+         printf("dequeue is done\n");
+     }
+     else if(front=-1)
+     {
+         printf("no elements in queue");
+     }
+     }
+     else if(ch==3)
+     {
+         printf("queue display\n");
+       temp=head;
+       while(temp!=NULL)
+        {
+            printf("%d\t",temp->data);
+            temp=temp->next;
+        }
+        continue;
+     }
+     else
+     {
+         exit(0);
+         break;
+     }
+ }
+
+    return 0;
+}
