@@ -1,0 +1,152 @@
+// new single LINKED LIST OPERATIONS
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*next;
+};
+struct node*newnode,*ptr,*temp,*news,*sum;
+struct node*head=NULL;
+int main()
+{
+int p,choice=1,c,pos,i=1;
+while(p!=3)
+{
+printf("1.insert\t2.delete\t3.display\t4.exit");
+scanf("%d",&p);
+   if(p==1)
+   {
+         while(choice==1)
+        {
+               printf("1.begin\t2.position\t3.end");
+        scanf("%d",&c);
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter data");
+        scanf("%d",&newnode->data);
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=temp=newnode;
+        }
+        else
+        {
+             if(c==1)
+            {
+                newnode->next=head;
+                head=newnode;
+       
+            }
+            else if(c==2)
+            {
+              printf("enter pos");
+              scanf("%d",&pos);
+              newnode->next=NULL;
+              temp=head;
+                   while(temp->next!=NULL&&i<pos-1)
+                   {
+                     temp=temp->next;
+                     i++;
+                   }
+                   if(i!=pos-1)
+                   {
+                       printf("no position found");
+                   }
+                   else
+                   {//logic of insert at position
+                   newnode->next=temp->next;
+                   temp->next=newnode;
+                   }
+            }
+            else
+            {//logic for end insert
+                temp=head;
+                while(temp->next!=NULL)
+                {
+                    temp=temp->next;
+                }
+              temp->next=newnode;
+              temp=newnode;
+            }
+       }
+        printf("do you want to continue");
+        scanf("%d",&choice);
+    }
+}
+  else if(p==2)
+   {
+     int pos,d,i=1,choice=1;
+    if(head==NULL)
+    {
+        printf("\nlist is empty\n");
+    }
+    else
+    {
+    while(choice==1)
+    {
+    printf("1.begin\t2.position\t3.end");
+    scanf("%d",&d);
+        if(d==1)
+        {
+            temp=head->next;
+          head=temp;
+        }
+        else if(d==2)
+        {
+            printf("enter position\t");
+            scanf("%d",&pos);
+            temp=head;
+            while(i<pos-1&&temp->next!=NULL)
+            {
+                temp=temp->next;
+                i++;
+            }//logic for deletion at position
+             if(temp->next==NULL&&i!=pos-1)
+                   {
+                       printf("no position found");
+                   }
+                   else
+                   {
+            temp->next=temp->next->next;
+                   }
+        }
+        else
+        {
+            temp=head;
+            while(temp->next->next!=NULL)
+            {
+                temp=temp->next;
+            }
+        temp->next=NULL;
+        }
+        printf("do you want to continue");
+        scanf("%d",&choice);
+}
+}
+    }
+  
+else if(p==3)
+  {
+     temp=head;
+     if(temp==NULL)
+     {
+       printf("\nempty\n");  
+     }
+     else
+     {
+         printf("elements are");
+    while(temp!=NULL)
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+}
+}
+else
+   {
+     exit(0);
+      break;
+   }
+}
+return 0;
+}
