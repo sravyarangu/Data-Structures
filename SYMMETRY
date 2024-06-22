@@ -15,21 +15,18 @@ int main() {
     if (l % 2 == 0) {
         m = (l / 2) - 1;
 
-        for (int i = m + 1; i < l; i++) {
-            top++;
-            a[top] = s[i];
-            printf("%d is top\n", top);
+        
         }
-    } else {
+     else {
         m = ((l + 1) / 2) - 1;
-        d1 = m;
+        d1 = m;}
 
         for (int i = m + 1; i < l; i++) {
             top++;
             a[top] = s[i];
             printf("%d is top\n", top);
         }
-    }
+
 if (l % 2 != 0) {
             m--;
 }
@@ -37,7 +34,7 @@ if (l % 2 != 0) {
         char ch = a[top];
         top--;
 
-        
+
 
         if (ch == s[m]) {
             j++;
