@@ -1,0 +1,41 @@
+// simple printer queue
+#include <stdio.h>
+#include<stdlib.h>
+int main() {
+ int a[20],front=-1,rear=-1,i,n,ch=1,d;
+ printf("enter size");
+ scanf("%d",&n);
+ while(ch!=0)
+ {
+   
+         if(rear==n-1)
+         {
+             printf("overflow\n");
+             break;
+         }
+         printf("enter data\t");
+         scanf("%d",&d);
+         if(front==-1)
+         {
+             front=0;
+             rear=0;
+             a[rear]=d;
+         }
+         else
+         {
+             rear=rear+1;
+             a[rear]=d;
+         }
+         printf("do you want to continue? ");
+         scanf("%d",&ch);
+
+ }
+
+         printf("simple printer\n");
+        for(i=front;i<=rear;i++)
+        {
+            printf("%d\t",a[i]);
+        }
+     
+    return 0;
+}
