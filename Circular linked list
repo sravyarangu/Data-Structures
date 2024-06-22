@@ -151,7 +151,10 @@ void in_pos()
         temp = temp->next;
         i++;
     }
-    
+    if(i!=pos) 
+{
+printf(" no position found");
+}
     newnode->prev = temp;
     newnode->next = temp->next;
     temp->next->prev = newnode;
