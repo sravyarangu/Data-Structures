@@ -1,0 +1,154 @@
+// Binary tree recursive
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node
+{
+    struct node*left;
+    struct node*right;
+    int data;
+}*root=NULL,*new;
+void create();
+void insert(struct node*,struct node*);
+void inorder(struct node*);
+void postorder(struct node*);
+void preorder(struct node*);
+void create()
+{
+ int element;
+ new=(struct node*)malloc(sizeof(struct node));
+ new->right=NULL;
+ new->left=NULL;
+ printf("enter data");
+ scanf("%d",&element);
+ new->data=element;
+ if(root==NULL)
+ {
+     printf("root inserted");
+     root=new;
+ }
+ else
+ {
+     insert(root,new);
+     printf("ins");
+ }
+ return;
+}
+ void insert(struct node*root,struct node*new)
+ {
+   int h;
+   printf("left child or right child");
+   scanf("%d",&h);
+   switch(h)
+   {
+       case 1:
+       {
+       if(root->left==NULL)
+       {
+           root->left=new;
+       printf("leftroot");
+       }
+       else
+       {
+           insert(root->left,new);
+       }
+       return;
+       }
+   case 2:
+   {
+       if(root->right==NULL)
+       {
+           root->right=new;
+           printf("rroot");
+           return;
+       }
+       else
+       {
+           insert(root->right,new);
+           printf("right");
+           return;
+       }
+     
+   }
+   }
+ }
+ void inorder(struct node*temp)
+ {
+     if(temp!=NULL)
+     {
+         inorder(temp->left);
+         printf("%d ",temp->data);
+         inorder(temp->right);
+     }
+     
+ }
+ void preorder(struct node*temp)
+ {
+     if(temp!=NULL)
+ {      
+     printf("%d ",temp->data);
+         preorder(temp->left);
+         preorder(temp->right);
+}
+
+}
+void postorder(struct node*temp)
+{
+    if(temp!=NULL)
+    {
+        postorder(temp->left);
+        postorder(temp->right);
+        printf("%d ",temp->data);
+    }
+}
+int main()
+{
+int ch;
+printf("\n1.c&i\n2.posto\n3.preo\n4.ino\n5.exit");
+while(1)
+{
+    printf("\nenter choice");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:create();
+        break;
+        case 2:
+        if(root==NULL)
+        {
+            printf("empty");
+        }
+        else
+        {
+            printf("postorder:")
+        postorder(root);
+        break;
+        }
+        case 3:
+if(root==NULL)
+        {
+            printf("empty");
+        }
+        else
+        {
+            printf("preorder:");
+        preorder(root);
+        break;
+        }
+        case 4:
+if(root==NULL)
+        {
+            printf("empty");
+        }
+        else
+        {
+            printf("inorder"):
+        inorder(root);
+        break;
+        }
+        case 5:exit(0); 
+        break;
+   }
+}
+return 0;
+}
