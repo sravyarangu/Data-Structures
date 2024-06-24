@@ -1,0 +1,132 @@
+//hash
+#include <stdio.h>
+
+#define SIZE 5
+#define hash1(x) (x % SIZE)
+#define hash2(x) (7 - (x % 7)) // secondary hash function
+
+void insert_linear(int data[], int flag[], int x);
+void insert_quadratic(int data[], int flag[], int x);
+void insert_double(int data[], int flag[], int x);
+void display(int data[], int flag[]);
+
+int main() {
+    int data[SIZE], flag[SIZE], i, x, op;
+    int choice;
+do{
+    printf("Enter the choice of probing technique:\n");
+    printf("1. Linear Probing\n");
+    printf("2. Quadratic Probing\n");
+    printf("3. Double Hashing\n");
+    scanf("%d", &choice);
+
+    for (i = 0; i < SIZE; i++) {
+        flag[i] = 0;
+        data[i] = -1; // Initialize data array to -1 (indicating empty slots)
+    }
+
+    printf("Enter the number of keys to be inserted: ");
+    scanf("%d", &op);
+
+    for (i = 0; i < op; i++) {
+        printf("Enter the key to be inserted: ");
+        scanf("%d", &x);
+        switch (choice) {
+            case 1:
+                insert_linear(data, flag, x);
+                break;
+            case 2:
+                insert_quadratic(data, flag, x);
+                break;
+            case 3:
+                insert_double(data, flag, x);
+                break;
+            default:
+                printf("Invalid choice\n");
+                return 1;
+        }
+    }
+
+    printf("\nHash table:\n");
+    display(data, flag);
+}
+while(choice!=4);
+    return 0;
+}
+
+void insert_linear(int data[], int flag[], int x) {
+    int i = 0, start;
+    start = hash1(x);
+
+    while (flag[start] == 1 && i < SIZE) {
+        if (data[start] == x) {
+            return; // Element already in the table
+        }
+        start = (start + 1) % SIZE;
+        i++;
+    }
+
+    if (i == SIZE) {
+        printf("Hash table is full\n");
+        return;
+    }
+
+    data[start] = x;
+    flag[start] = 1;
+}
+
+void insert_quadratic(int data[], int flag[], int x) {
+    int i = 0, start;
+    start = hash1(x);
+
+    while (flag[start] == 1 && i < SIZE) {
+        if (data[start] == x) {
+            return; // Element already in the table
+        }
+        i++;
+        start = (hash1(x) + i * i) % SIZE;
+    }
+
+    if (i == SIZE) {
+        printf("Hash table is full\n");
+        return;
+    }
+
+    data[start] = x;
+    flag[start] = 1;
+}
+
+void insert_double(int data[], int flag[], int x) {
+    int i = 0, start, step;
+    start = hash1(x);
+    step = hash2(x);
+
+    while (flag[start] == 1 && i < SIZE) {
+        if (data[start] == x) {
+            return; // Element already in the table
+        }
+        start = (start + step) % SIZE;
+        i++;
+    }
+
+    if (i == SIZE) {
+        printf("Hash table is full\n");
+        return;
+    }
+
+    data[start] = x;
+    flag[start] = 1;
+}
+
+void display(int data[], int flag[]) {
+    int i;
+    for (i = 0; i < SIZE; i++) {
+        if (flag[i] == 1) {
+            printf("%d -> %d\n", i, data[i]);
+        } else {
+            printf("%d -> empty\n", i);
+
+        }
+    }
+    return;
+}
