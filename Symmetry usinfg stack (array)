@@ -1,4 +1,4 @@
-//symmetry
+//palindrome
 #include<stdio.h>
 #include<string.h>
 char stack[20];
@@ -30,11 +30,11 @@ void main()
     }
         if(j==l)
         {
-            printf("\nSYMMETRY\n");
+            printf("\npalim\n");
         }
         else if(j!=l)
         {
-            printf("\nUNSYMMETRY");
+            printf("\nnot palind");
         }
     //}
 }
