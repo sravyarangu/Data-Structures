@@ -6,9 +6,12 @@ struct node
     int data;
     struct node *next;
 }*head,*new,*temp,*ptr;
+int top=-1,i,ch=1,n,s;
+void push(struct node*);
+void pop();
 struct node *head=NULL;
 int main() {
- int top=-1,i,ch=1,n,s;
+ 
  printf("enter size");
  scanf("%d",&n);
  while(n>0)
@@ -27,7 +30,7 @@ int main() {
      {
          head=temp=new;
          top++;
-         
+
      }
       else if(top>n-2)
      {
@@ -35,9 +38,8 @@ int main() {
      }
      else
      {
-         new->next=head;
-         head=new;
-         top++;
+         push(new);
+         
      }
  }
      }
@@ -49,9 +51,8 @@ int main() {
          }
          else
          {
-             temp=head;
-             head=temp->next;
-            top--;
+             pop() ;
+             
             printf(" pop operation done\n");
          }
      }
@@ -76,4 +77,16 @@ if(s==4)
 }
 }
     return 0;
+}
+void push(struct node*new)
+{
+    new->next=head;
+         head=new;
+         top++;
+}
+void pop()
+{
+    temp=head;
+             head=temp->next;
+            top--;
 }
